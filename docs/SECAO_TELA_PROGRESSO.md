@@ -1,0 +1,21 @@
+# Seção 3.2.6 - Tela de Progresso e Acompanhamento de Treinos
+
+## 3.2.6 Tela de Progresso
+
+A tela de progresso representa um componente essencial para o engajamento e motivação dos usuários idosos, implementando visualizações intuitivas de dados históricos e métricas de desempenho. Esta interface consolida informações provenientes tanto do armazenamento local quanto do banco de dados remoto, oferecendo uma experiência híbrida *offline-first* que garante disponibilidade mesmo sem conexão à internet.
+
+A arquitetura da tela fundamenta-se em três fontes de dados distintas: AsyncStorage para persistência local imediata, tabela `completed_workouts` no Supabase para sincronização em nuvem, e um sistema de conquistas predefinidas (*achievements*) armazenado estaticamente no código. Durante o carregamento inicial, a aplicação prioriza dados locais para renderização instantânea, enquanto simultaneamente tenta sincronizar com o servidor remoto em segundo plano. Esta estratégia de carregamento progressivo reduz a latência percebida e melhora a experiência do usuário, especialmente considerando limitações de conectividade comuns no público-alvo.
+
+O componente estrutura-se em três seções principais de visualização. A primeira seção apresenta estatísticas consolidadas através de cards informativos, exibindo métricas como total de treinos completados e atividades realizadas na semana corrente. Estes indicadores numéricos são calculados dinamicamente a partir do histórico completo armazenado, aplicando operações de agregação (`reduce`, `length`) sobre arrays de registros. A segunda seção implementa um gráfico de barras verticais que visualiza os últimos sete dias de atividade física. O algoritmo de renderização agrupa treinos por data, calcula valores máximos para normalização proporcional das alturas das barras (`maxVal`), e dimensiona cada barra verticalmente de acordo com o número de treinos realizados no dia (`barHeight = (val / maxVal) * chartHeight`). Esta visualização permite identificação rápida de padrões de consistência e períodos de inatividade.
+
+A terceira seção apresenta uma lista cronológica reversa dos treinos recentes, ordenados do mais recente ao mais antigo. Cada item da lista exibe data de realização, número de passos (ou repetições), e nome do exercício executado quando disponível. Esta abordagem detalhada complementa as visualizações agregadas, permitindo auditoria precisa das atividades realizadas. O sistema de conquistas (*achievements*) implementa gamificação básica através de heurísticas simples: cada conquista possui valores de `progress` e `maxProgress`, sendo desbloqueada (`unlocked: true`) quando o total de treinos completados atinge ou excede o limiar definido. Por exemplo, a conquista "Primeiro Treino" desbloqueia com 1 treino, enquanto "Guerreiro da Semana" exige 5 treinos. Esta mecânica motiva comportamentos consistentes através de recompensas psicológicas progressivas, elemento reconhecidamente eficaz em aplicações de saúde para idosos (DIREITO et al., 2020).
+
+A estratégia de sincronização de dados adota tratamento robusto de erros através de blocos `try-catch` aninhados. Caso a conexão com Supabase falhe (timeout, rede indisponível, credenciais inválidas), a aplicação silenciosamente retorna aos dados locais previamente carregados, registrando o erro apenas em console para depuração. Este comportamento resiliente garante que falhas de rede não interrompam a experiência do usuário, princípio fundamental em aplicações móveis destinadas a públicos com alfabetização digital limitada. A interface utiliza componentes do sistema de design tokens (`SPACING`, `COLORS`) para manter consistência visual com o restante da aplicação, aplicando cores primárias (`#0ea5a3`) para destacar valores importantes e cores secundárias (`mutedForeground`) para informações auxiliares.
+
+---
+
+## Referências
+
+DIREITO, A. et al. **mHealth Technologies to Influence Physical Activity and Sedentary Behaviors: Behavior Change Techniques, Systematic Review and Meta-Analysis of Randomized Controlled Trials**. *Annals of Behavioral Medicine*, v. 54, n. 5, p. 323–338, 2020. DOI: 10.1093/abm/kaz057.
+
+SUPABASE INC. **Real-time Database Subscriptions**. Supabase Documentation, 2024. Disponível em: https://supabase.com/docs/guides/database/real-time. Acesso em: 2 nov. 2025.

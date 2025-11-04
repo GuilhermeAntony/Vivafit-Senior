@@ -1,0 +1,174 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36" version="28.2.7">
+  <diagram name="Arquitetura VivaFit Seniors" id="vivafit-architecture">
+    <mxGraphModel dx="1426" dy="759" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="1100" pageHeight="850" background="light-dark(#FFFFFF,#FFFFFF)" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="AG10Dhk1sW0xJ9ITFtQG-16" value="" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="176" y="98" width="734" height="148" as="geometry" />
+        </mxCell>
+        <mxCell id="AG10Dhk1sW0xJ9ITFtQG-15" value="" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="176" y="428" width="734" height="166" as="geometry" />
+        </mxCell>
+        <mxCell id="AG10Dhk1sW0xJ9ITFtQG-14" value="" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="176" y="257" width="734" height="163.5" as="geometry" />
+        </mxCell>
+        <mxCell id="AG10Dhk1sW0xJ9ITFtQG-13" value="" style="rounded=0;whiteSpace=wrap;html=1;fontColor=light-dark(#000000,#FFFFFF);" parent="1" vertex="1">
+          <mxGeometry x="176" y="602" width="734" height="166" as="geometry" />
+        </mxCell>
+        <mxCell id="layer1-title" value="&lt;font style=&quot;color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;CAMADA DE APRESENTAÇÃO&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;fontStyle=1;fontColor=#ffffff;" parent="1" vertex="1">
+          <mxGeometry x="425" y="105" width="250" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="box1-1" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=light-dark(#FF00FF,#0000CC);strokeColor=none;shadow=1;gradientColor=none;" parent="1" vertex="1">
+          <mxGeometry x="200" y="140" width="220" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="box1-1-title" value="Telas" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=20;fontStyle=1;fontColor=light-dark(#FFFFFF,#FFFFFF);" parent="1" vertex="1">
+          <mxGeometry x="200" y="155" width="220" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="box1-1-subtitle" value="Dashboard, Perfil&lt;br&gt;Exercícios" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=15;fontColor=light-dark(#FFFFFF,#FFFFFF);" parent="1" vertex="1">
+          <mxGeometry x="200" y="185" width="220" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="AG10Dhk1sW0xJ9ITFtQG-19" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="box1-2" target="box2-2" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="box1-2" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#2d3748;strokeColor=#4a5568;shadow=1;" parent="1" vertex="1">
+          <mxGeometry x="440" y="140" width="220" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="box1-2-title" value="Componentes UI" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=20;fontStyle=1;fontColor=#ffffff;" parent="1" vertex="1">
+          <mxGeometry x="440" y="155" width="220" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="box1-2-subtitle" value="Botão, Card, Entrada" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=15;fontColor=#e2e8f0;" parent="1" vertex="1">
+          <mxGeometry x="440" y="185" width="220" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="box1-3" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#2d3748;strokeColor=#4a5568;shadow=1;" parent="1" vertex="1">
+          <mxGeometry x="680" y="140" width="220" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="box1-3-title" value="Navegação" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=20;fontStyle=1;fontColor=#ffffff;" parent="1" vertex="1">
+          <mxGeometry x="680" y="155" width="220" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="AG10Dhk1sW0xJ9ITFtQG-20" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="box1-3-subtitle" target="box2-3" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="box1-3-subtitle" value="Navegador em Pilha" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=15;fontColor=#e2e8f0;" parent="1" vertex="1">
+          <mxGeometry x="680" y="185" width="220" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="layer2-title" value="&lt;font style=&quot;color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;CAMADA DE LÓGICA DE NEGÓCIO&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;fontStyle=1;fontColor=#ffffff;" parent="1" vertex="1">
+          <mxGeometry x="418" y="267" width="250" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="AG10Dhk1sW0xJ9ITFtQG-21" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="box2-1" target="box3-1" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="box2-1" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=light-dark(#FF00FF,#0000CC);strokeColor=none;shadow=1;gradientColor=none;" parent="1" vertex="1">
+          <mxGeometry x="200" y="310" width="220" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="box2-1-title" value="Hooks Personalizados" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=20;fontStyle=1;fontColor=light-dark(#FFFFFF,#FFFFFF);" parent="1" vertex="1">
+          <mxGeometry x="200" y="325" width="220" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="box2-1-subtitle" value="useCachedImage&lt;br&gt;useAuth" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=15;fontColor=default;" parent="1" vertex="1">
+          <mxGeometry x="200" y="355" width="220" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="box2-2" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#2d3748;strokeColor=#4a5568;shadow=1;" parent="1" vertex="1">
+          <mxGeometry x="440" y="310" width="220" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="box2-2-title" value="Serviços" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=20;fontStyle=1;fontColor=#ffffff;" parent="1" vertex="1">
+          <mxGeometry x="440" y="325" width="220" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="AG10Dhk1sW0xJ9ITFtQG-30" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="box2-2-subtitle" target="box3-2" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="550" y="472" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="box2-2-subtitle" value="exerciseCache&lt;br&gt;syncService" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=15;fontColor=#e2e8f0;" parent="1" vertex="1">
+          <mxGeometry x="440" y="355" width="220" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="AG10Dhk1sW0xJ9ITFtQG-26" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="box2-3" target="box3-3" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="box2-3" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#2d3748;strokeColor=#4a5568;shadow=1;" parent="1" vertex="1">
+          <mxGeometry x="680" y="310" width="220" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="box2-3-title" value="Utilitários" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=20;fontStyle=1;fontColor=#ffffff;" parent="1" vertex="1">
+          <mxGeometry x="680" y="325" width="220" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="box2-3-subtitle" value="validação, auxiliares" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=15;fontColor=#e2e8f0;" parent="1" vertex="1">
+          <mxGeometry x="680" y="355" width="220" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="layer3-title" value="&lt;font style=&quot;color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;CAMADA DE ACESSO A DADOS&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;fontStyle=1;fontColor=#ffffff;" parent="1" vertex="1">
+          <mxGeometry x="418" y="434" width="250" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="box3-1" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=light-dark(#FF00FF,#0000CC);strokeColor=none;shadow=1;gradientColor=none;" parent="1" vertex="1">
+          <mxGeometry x="200" y="480" width="220" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="box3-1-title" value="Cliente Supabase" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=20;fontStyle=1;fontColor=light-dark(#FFFFFF,#FFFFFF);" parent="1" vertex="1">
+          <mxGeometry x="200" y="495" width="220" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="AG10Dhk1sW0xJ9ITFtQG-22" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" parent="1" source="box3-1" target="box4-1" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="box3-1-subtitle" value="Operações de Banco" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=15;fontColor=light-dark(#FFFFFF,#FFFFFF);" parent="1" vertex="1">
+          <mxGeometry x="200" y="525" width="220" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="AG10Dhk1sW0xJ9ITFtQG-24" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="box3-2" target="box4-2" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="box3-2" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#2d3748;strokeColor=#4a5568;shadow=1;" parent="1" vertex="1">
+          <mxGeometry x="440" y="480" width="220" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="box3-2-title" value="Armazenamento Local" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=20;fontStyle=1;fontColor=#ffffff;" parent="1" vertex="1">
+          <mxGeometry x="440" y="495" width="220" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="box3-2-subtitle" value="AsyncStorage&lt;br&gt;FileSystem" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=15;fontColor=#e2e8f0;" parent="1" vertex="1">
+          <mxGeometry x="440" y="525" width="220" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="AG10Dhk1sW0xJ9ITFtQG-25" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="box3-3" target="box4-3" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="box3-3" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#2d3748;strokeColor=#4a5568;shadow=1;" parent="1" vertex="1">
+          <mxGeometry x="680" y="480" width="220" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="box3-3-title" value="Estratégia de Cache" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=20;fontStyle=1;fontColor=#ffffff;" parent="1" vertex="1">
+          <mxGeometry x="680" y="495" width="220" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="box3-3-subtitle" value="Padrão Offline-first" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=15;fontColor=#e2e8f0;" parent="1" vertex="1">
+          <mxGeometry x="680" y="525" width="220" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="box4-1" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=light-dark(#FF00FF,#0000CC);strokeColor=none;shadow=1;gradientColor=none;" parent="1" vertex="1">
+          <mxGeometry x="200" y="650" width="220" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="box4-1-title" value="Backend Supabase" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=20;fontStyle=1;fontColor=light-dark(#FFFFFF,#FFFFFF);" parent="1" vertex="1">
+          <mxGeometry x="200" y="665" width="220" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="box4-1-subtitle" value="PostgreSQL + Auth" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=15;fontColor=light-dark(#FFFFFF,#FFFFFF);" parent="1" vertex="1">
+          <mxGeometry x="200" y="695" width="220" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="box4-2" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#2d3748;strokeColor=#4a5568;shadow=1;" parent="1" vertex="1">
+          <mxGeometry x="440" y="650" width="220" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="box4-2-title" value="Serviços EAS" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=20;fontStyle=1;fontColor=#ffffff;" parent="1" vertex="1">
+          <mxGeometry x="440" y="665" width="220" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="box4-2-subtitle" value="Build + Deploy" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=15;fontColor=#e2e8f0;" parent="1" vertex="1">
+          <mxGeometry x="440" y="695" width="220" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="box4-3" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#2d3748;strokeColor=#4a5568;shadow=1;" parent="1" vertex="1">
+          <mxGeometry x="680" y="650" width="220" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="box4-3-title" value="APIs do Dispositivo" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=20;fontStyle=1;fontColor=#ffffff;" parent="1" vertex="1">
+          <mxGeometry x="680" y="665" width="220" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="box4-3-subtitle" value="Câmera, Armazenamento&lt;br&gt;Rede" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=15;fontColor=#e2e8f0;" parent="1" vertex="1">
+          <mxGeometry x="680" y="695" width="220" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="AG10Dhk1sW0xJ9ITFtQG-17" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="box1-1" target="box2-1" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="layer4-title" value="&lt;font style=&quot;color: light-dark(rgb(255, 255, 255), rgb(255, 255, 255));&quot;&gt;CAMADA DE INFRAESTRUTURA&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;fontStyle=1;fontColor=#ffffff;" parent="1" vertex="1">
+          <mxGeometry x="425" y="614" width="250" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="AG10Dhk1sW0xJ9ITFtQG-27" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" parent="1" source="layer3-title" target="layer3-title" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

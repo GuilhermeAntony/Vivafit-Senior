@@ -1,0 +1,145 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36" version="28.2.8">
+  <diagram name="VivaFit Seniors - Arquitetura de Dados" id="data-persistence">
+    <mxGraphModel dx="1426" dy="759" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1400" pageHeight="900" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="background" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=light-dark(#0A1929,#FFFFFF);strokeColor=none;" parent="1" vertex="1">
+          <mxGeometry x="60" y="80" width="1190" height="720" as="geometry" />
+        </mxCell>
+        <mxCell id="user-input" value="Entrada do Usuário" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#2d3748;strokeColor=#4a5568;strokeWidth=2;fontColor=#FFFFFF;fontSize=20;fontStyle=0;shadow=1;" parent="1" vertex="1">
+          <mxGeometry x="280" y="100" width="160" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="server-data" value="Dados do Servidor" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#2d3748;strokeColor=#4a5568;strokeWidth=2;fontColor=#FFFFFF;fontSize=20;fontStyle=0;shadow=1;" parent="1" vertex="1">
+          <mxGeometry x="960" y="100" width="160" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="g0vIJH9Qv7Sc3XnvOmTh-1" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=light-dark(#000000,#000000);strokeWidth=2;" edge="1" parent="1" source="local-storage" target="cache-strategy">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="local-storage" value="&lt;font style=&quot;color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;Armazenamento Local&lt;br&gt;AsyncStorage&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=light-dark(#0066FF,#0000CC);strokeColor=#0052CC;strokeWidth=2;fontColor=#FFFFFF;fontSize=20;fontStyle=1;shadow=1;" parent="1" vertex="1">
+          <mxGeometry x="260" y="220" width="200" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="arrow-input-local" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=1;entryX=0.5;entryY=0;strokeColor=#ffffff;strokeWidth=2;" parent="1" source="user-input" target="local-storage" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="360" y="180" as="sourcePoint" />
+            <mxPoint x="360" y="240" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="network-decision" value="Rede Disponível?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#2d3748;strokeColor=#4a5568;strokeWidth=2;fontColor=#FFFFFF;fontSize=20;fontStyle=1;shadow=1;" parent="1" vertex="1">
+          <mxGeometry x="245" y="360" width="230" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="arrow-local-network" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=1;entryX=0.5;entryY=0;strokeColor=#ffffff;strokeWidth=2;" parent="1" source="local-storage" target="network-decision" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="360" y="320" as="sourcePoint" />
+            <mxPoint x="360" y="380" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="supabase-sync" value="&lt;font style=&quot;color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;Sincronização Supabase&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=light-dark(#0066FF,#0000CC);strokeColor=#0052CC;strokeWidth=2;fontColor=#FFFFFF;fontSize=20;fontStyle=1;shadow=1;" parent="1" vertex="1">
+          <mxGeometry x="80" y="550" width="180" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="arrow-yes-sync" value="" style="endArrow=classic;html=1;rounded=0;exitX=0;exitY=0.5;entryX=0.5;entryY=0;strokeColor=#ffffff;strokeWidth=2;fontColor=#FFFFFF;fontSize=13;" parent="1" source="network-decision" target="supabase-sync" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="230" y="420" as="sourcePoint" />
+            <mxPoint x="170" y="570" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="170" y="420" />
+              <mxPoint x="170" y="480" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="RjUqzOgzCI5t4BsUN-9H-6" value="Sim" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=none;fontColor=light-dark(#000000,#000000);fontSize=20;" parent="arrow-yes-sync" vertex="1" connectable="0">
+          <mxGeometry x="0.2476" y="1" relative="1" as="geometry">
+            <mxPoint x="19" y="-3" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="queue-later" value="Enfileirar para Depois" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#2d3748;strokeColor=#4a5568;strokeWidth=2;fontColor=#FFFFFF;fontSize=20;fontStyle=0;shadow=1;" parent="1" vertex="1">
+          <mxGeometry x="320" y="550" width="180" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="arrow-no-queue" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=1;entryX=0.5;entryY=0;strokeColor=#ffffff;strokeWidth=2;fontColor=#FFFFFF;fontSize=13;" parent="1" source="network-decision" target="queue-later" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="360" y="500" as="sourcePoint" />
+            <mxPoint x="410" y="570" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="RjUqzOgzCI5t4BsUN-9H-5" value="&lt;font style=&quot;color: light-dark(rgb(0, 0, 0), rgb(0, 0, 0));&quot;&gt;Não&lt;/font&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=none;fontSize=20;" parent="arrow-no-queue" vertex="1" connectable="0">
+          <mxGeometry x="-0.264" y="-1" relative="1" as="geometry">
+            <mxPoint x="32" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="update-cache" value="Atualizar Cache Local" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#2d3748;strokeColor=#4a5568;strokeWidth=2;fontColor=#FFFFFF;fontSize=20;fontStyle=0;shadow=1;" parent="1" vertex="1">
+          <mxGeometry x="80" y="680" width="180" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="arrow-sync-cache" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=1;entryX=0.5;entryY=0;strokeColor=#ffffff;strokeWidth=2;" parent="1" source="supabase-sync" target="update-cache" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="170" y="640" as="sourcePoint" />
+            <mxPoint x="170" y="700" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="background-sync" value="Sincronização em&lt;br&gt;Background" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#2d3748;strokeColor=#4a5568;strokeWidth=2;fontColor=#FFFFFF;fontSize=20;fontStyle=0;shadow=1;" parent="1" vertex="1">
+          <mxGeometry x="320" y="680" width="180" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="arrow-queue-bg" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=1;entryX=0.5;entryY=0;strokeColor=#ffffff;strokeWidth=2;" parent="1" source="queue-later" target="background-sync" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="410" y="640" as="sourcePoint" />
+            <mxPoint x="410" y="700" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="cache-valid" value="Cache Válido?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#2d3748;strokeColor=#4a5568;strokeWidth=2;fontColor=#FFFFFF;fontSize=20;fontStyle=1;shadow=1;" parent="1" vertex="1">
+          <mxGeometry x="955" y="200" width="170" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="arrow-server-cache" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=1;entryX=0.5;entryY=0;strokeColor=#ffffff;strokeWidth=2;" parent="1" source="server-data" target="cache-valid" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="1040" y="180" as="sourcePoint" />
+            <mxPoint x="1040" y="220" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="serve-cache" value="Servir do Cache" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#2d3748;strokeColor=#4a5568;strokeWidth=2;fontColor=#FFFFFF;fontSize=20;fontStyle=0;shadow=1;" parent="1" vertex="1">
+          <mxGeometry x="970" y="600" width="180" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="arrow-yes-serve" value="" style="endArrow=classic;html=1;rounded=0;exitX=0;exitY=1;entryX=0.219;entryY=-0.007;strokeColor=#ffffff;strokeWidth=2;fontColor=#FFFFFF;fontSize=13;entryDx=0;entryDy=0;entryPerimeter=0;exitDx=0;exitDy=0;" parent="1" source="cache-valid" target="serve-cache" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="1040" y="340" as="sourcePoint" />
+            <mxPoint x="1040" y="410" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="950" y="450" />
+            </Array>
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="RjUqzOgzCI5t4BsUN-9H-8" value="Sim" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=none;fontColor=light-dark(#000000,#000000);fontSize=20;" parent="arrow-yes-serve" vertex="1" connectable="0">
+          <mxGeometry x="-0.0577" y="-1" relative="1" as="geometry">
+            <mxPoint x="2" y="-78" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="fetch-cache" value="&lt;font style=&quot;color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;Buscar e Cachear&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=light-dark(#0066FF,#0000CC);strokeColor=#0052CC;strokeWidth=2;fontColor=#FFFFFF;fontSize=20;fontStyle=1;shadow=1;" parent="1" vertex="1">
+          <mxGeometry x="1040" y="400" width="180" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="arrow-no-fetch" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.723;exitY=0.76;entryX=0.5;entryY=0;strokeColor=#ffffff;strokeWidth=2;fontColor=#FFFFFF;fontSize=20;exitDx=0;exitDy=0;exitPerimeter=0;" parent="1" source="cache-valid" target="fetch-cache" edge="1">
+          <mxGeometry x="0.0035" width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="1145" y="260" as="sourcePoint" />
+            <mxPoint x="1280" y="410" as="targetPoint" />
+            <Array as="points" />
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="RjUqzOgzCI5t4BsUN-9H-2" value="Não" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=20;labelBackgroundColor=none;fontColor=light-dark(#000000,#000000);" parent="arrow-no-fetch" vertex="1" connectable="0">
+          <mxGeometry x="0.2194" y="-2" relative="1" as="geometry">
+            <mxPoint x="32" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="cache-strategy" value="Cache de 7 dias&lt;br&gt;Política de Expiração" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#2d3748;strokeColor=#4a5568;strokeWidth=2;fontColor=#FFFFFF;fontSize=20;fontStyle=0;shadow=1;" parent="1" vertex="1">
+          <mxGeometry x="520" y="220" width="240" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="arrow-fetch-file" value="" style="endArrow=classic;html=1;rounded=1;strokeColor=#ffffff;strokeWidth=2;curved=1;entryX=0.84;entryY=0.052;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="fetch-cache" target="serve-cache" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="1170" y="425" as="sourcePoint" />
+            <mxPoint x="820" y="360" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="1120" y="590" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

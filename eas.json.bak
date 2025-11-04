@@ -1,0 +1,16 @@
+{
+  "build": {
+    "profiles": {
+      "production": {
+        "android": {
+          "buildType": "app-bundle"
+        }
+      },
+      "release": {
+        "android": {
+          "buildType": "apk"
+        }
+      }
+    }
+  }
+}

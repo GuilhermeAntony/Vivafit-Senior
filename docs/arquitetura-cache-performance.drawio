@@ -1,0 +1,150 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36" version="28.2.7">
+  <diagram name="VivaFit Seniors - Cache e Performance" id="6NTFNyObFwQUQ5yYBG0_">
+    <mxGraphModel dx="1426" dy="1928" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="nuOlMz1gKqsYvPSizzgd-1" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=light-dark(#FFFFFF,#FFFFFF);strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="30" y="-40" width="1160" height="400" as="geometry" />
+        </mxCell>
+        <mxCell id="nuOlMz1gKqsYvPSizzgd-2" value="Solicitação de Dados" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#2d3748;strokeColor=#4a5568;strokeWidth=2;fontColor=#FFFFFF;fontSize=20;fontStyle=0;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="100" width="120" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="nuOlMz1gKqsYvPSizzgd-3" value="Cache Local&lt;br&gt;Existe?" style="rhombus;whiteSpace=wrap;html=1;fillColor=none;strokeColor=light-dark(#4A5568,#0000CC);strokeWidth=2;fontColor=#FFFFFF;fontSize=20;fontStyle=1;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="190" y="53.75" width="160" height="142.5" as="geometry" />
+        </mxCell>
+        <mxCell id="nuOlMz1gKqsYvPSizzgd-4" value="" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=0.5;entryX=0;entryY=0.5;strokeColor=#ffffff;strokeWidth=2;" edge="1" parent="1" source="nuOlMz1gKqsYvPSizzgd-2" target="nuOlMz1gKqsYvPSizzgd-3">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="180" y="75" as="sourcePoint" />
+            <mxPoint x="220" y="75" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="nuOlMz1gKqsYvPSizzgd-6" value="&lt;font&gt;Sim&lt;/font&gt;" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=0.25;strokeColor=#ffffff;strokeWidth=2;fontColor=light-dark(#000000,#000000);fontSize=20;labelBackgroundColor=none;entryX=0.157;entryY=0.65;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="nuOlMz1gKqsYvPSizzgd-3" target="nuOlMz1gKqsYvPSizzgd-34">
+          <mxGeometry x="0.0123" y="-19" width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="360" y="55" as="sourcePoint" />
+            <mxPoint x="400" y="45" as="targetPoint" />
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="nuOlMz1gKqsYvPSizzgd-7" value="Buscar Dados&lt;br&gt;Remotos" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#2d3748;strokeColor=#4a5568;strokeWidth=2;fontColor=#FFFFFF;fontSize=20;fontStyle=0;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="575" y="175" width="130" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="nuOlMz1gKqsYvPSizzgd-8" value="Não" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=0.75;entryX=0;entryY=0.5;strokeColor=light-dark(#000000,#000000);strokeWidth=2;fontColor=light-dark(#000000,#000000);fontSize=20;labelBackgroundColor=none;" edge="1" parent="1" source="nuOlMz1gKqsYvPSizzgd-3" target="nuOlMz1gKqsYvPSizzgd-7">
+          <mxGeometry x="-0.1243" y="-18" width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="360" y="95" as="sourcePoint" />
+            <mxPoint x="400" y="115" as="targetPoint" />
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="nuOlMz1gKqsYvPSizzgd-10" value="" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=0.5;strokeColor=#ffffff;strokeWidth=2;" edge="1" parent="1" source="nuOlMz1gKqsYvPSizzgd-7" target="nuOlMz1gKqsYvPSizzgd-11">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="530" y="115" as="sourcePoint" />
+            <mxPoint x="580" y="155" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="nuOlMz1gKqsYvPSizzgd-11" value="Sucesso na Busca?" style="rhombus;whiteSpace=wrap;html=1;fillColor=none;strokeColor=light-dark(#4A5568,#0000CC);strokeWidth=2;fontColor=#FFFFFF;fontSize=20;fontStyle=1;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="730" y="70" width="150" height="150" as="geometry" />
+        </mxCell>
+        <mxCell id="nuOlMz1gKqsYvPSizzgd-14" value="Sim" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=0.25;entryX=0;entryY=0.5;strokeColor=#ffffff;strokeWidth=2;fontColor=light-dark(#000000,#000000);fontSize=20;labelBackgroundColor=none;entryDx=0;entryDy=0;" edge="1" parent="1" source="nuOlMz1gKqsYvPSizzgd-11" target="nuOlMz1gKqsYvPSizzgd-43">
+          <mxGeometry x="-0.1623" y="-27" width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="910" y="55" as="sourcePoint" />
+            <mxPoint x="940" y="45" as="targetPoint" />
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="nuOlMz1gKqsYvPSizzgd-16" value="Não" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=0.75;strokeColor=#ffffff;strokeWidth=2;fontColor=light-dark(#FFFFFF,#121212);fontSize=20;labelBackgroundColor=none;entryX=0;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="nuOlMz1gKqsYvPSizzgd-11" target="nuOlMz1gKqsYvPSizzgd-17">
+          <mxGeometry x="-0.3215" y="-18" width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="910" y="95" as="sourcePoint" />
+            <mxPoint x="899" y="225" as="targetPoint" />
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="nuOlMz1gKqsYvPSizzgd-17" value="Offline?" style="rhombus;whiteSpace=wrap;html=1;fillColor=none;strokeColor=light-dark(#4A5568,#0000CC);strokeWidth=2;fontColor=#FFFFFF;fontSize=20;fontStyle=1;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="890" y="185" width="100" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="nuOlMz1gKqsYvPSizzgd-19" value="Retornar Cache Expirado" style="rounded=1;whiteSpace=wrap;html=1;fillColor=light-dark(#0000CC,#0000CC);strokeColor=none;strokeWidth=2;fontColor=default;fontSize=20;fontStyle=1;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="1054.5" y="100" width="131" height="75" as="geometry" />
+        </mxCell>
+        <mxCell id="nuOlMz1gKqsYvPSizzgd-20" value="Sim" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=0.25;entryX=0;entryY=0.5;strokeColor=#ffffff;strokeWidth=2;fontColor=light-dark(#FFFFFF,#121212);fontSize=20;labelBackgroundColor=none;" edge="1" parent="1" source="nuOlMz1gKqsYvPSizzgd-17" target="nuOlMz1gKqsYvPSizzgd-19">
+          <mxGeometry x="-0.1094" y="-21" width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="1220" y="93" as="sourcePoint" />
+            <mxPoint x="1260" y="75" as="targetPoint" />
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="nuOlMz1gKqsYvPSizzgd-21" value="Mostrar Erro" style="rounded=1;whiteSpace=wrap;html=1;fillColor=light-dark(#0000CC,#0000CC);strokeColor=none;strokeWidth=2;fontColor=default;fontSize=20;fontStyle=1;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="1060" y="260" width="120" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="nuOlMz1gKqsYvPSizzgd-22" value="Não" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=0.75;entryX=0;entryY=0.5;strokeColor=#ffffff;strokeWidth=2;fontColor=#FFFFFF;fontSize=20;labelBackgroundColor=none;" edge="1" parent="1" source="nuOlMz1gKqsYvPSizzgd-17" target="nuOlMz1gKqsYvPSizzgd-21">
+          <mxGeometry x="-0.2757" y="-15" width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="1220" y="137" as="sourcePoint" />
+            <mxPoint x="1260" y="145" as="targetPoint" />
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="nuOlMz1gKqsYvPSizzgd-23" value="Limpeza Automática" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#2d3748;strokeColor=#4a5568;strokeWidth=2;fontColor=#FFFFFF;fontSize=20;fontStyle=0;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="90" y="275" width="130" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="nuOlMz1gKqsYvPSizzgd-24" value="Cache: 7 dias" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#2d3748;strokeColor=#4a5568;strokeWidth=2;fontColor=#FFFFFF;fontSize=20;fontStyle=0;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="310" y="270" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="nuOlMz1gKqsYvPSizzgd-25" value="" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=0.5;entryX=0;entryY=0.5;strokeColor=#ffffff;strokeWidth=2;" edge="1" parent="1" source="nuOlMz1gKqsYvPSizzgd-23" target="nuOlMz1gKqsYvPSizzgd-24">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="190" y="305" as="sourcePoint" />
+            <mxPoint x="230" y="305" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="nuOlMz1gKqsYvPSizzgd-26" value="Remover Entradas Antigas" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#2d3748;strokeColor=#4a5568;strokeWidth=2;fontColor=#FFFFFF;fontSize=20;fontStyle=0;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="520" y="270" width="160" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="nuOlMz1gKqsYvPSizzgd-27" value="" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=0.5;entryX=0;entryY=0.5;strokeColor=#ffffff;strokeWidth=2;" edge="1" parent="1" source="nuOlMz1gKqsYvPSizzgd-24" target="nuOlMz1gKqsYvPSizzgd-26">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="340" y="305" as="sourcePoint" />
+            <mxPoint x="380" y="305" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="nuOlMz1gKqsYvPSizzgd-28" value="&lt;font&gt;Fluxo Principal de Cache&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;fontSize=20;fontStyle=2;fontColor=#cbd5e0;" vertex="1" parent="1">
+          <mxGeometry x="50" width="150" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="nuOlMz1gKqsYvPSizzgd-29" value="Otimização e Limpeza" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;fontSize=20;fontStyle=2;fontColor=#cbd5e0;" vertex="1" parent="1">
+          <mxGeometry x="100" y="205" width="150" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="nuOlMz1gKqsYvPSizzgd-36" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0;exitDx=0;exitDy=0;labelBackgroundColor=none;fontColor=light-dark(#000000,#000000);strokeColor=light-dark(#000000,#000000);fontSize=15;strokeWidth=2;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="nuOlMz1gKqsYvPSizzgd-34" target="nuOlMz1gKqsYvPSizzgd-35">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="nuOlMz1gKqsYvPSizzgd-37" value="Sim" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=none;fontColor=light-dark(#000000,#000000);fontSize=20;" vertex="1" connectable="0" parent="nuOlMz1gKqsYvPSizzgd-36">
+          <mxGeometry x="-0.2267" y="1" relative="1" as="geometry">
+            <mxPoint x="-1" y="-14" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="nuOlMz1gKqsYvPSizzgd-39" value="Não" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeWidth=2;strokeColor=light-dark(#000000,#000000);labelBackgroundColor=none;fontColor=light-dark(#000000,#000000);fontSize=20;exitX=0.692;exitY=0.821;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="nuOlMz1gKqsYvPSizzgd-34" target="nuOlMz1gKqsYvPSizzgd-38">
+          <mxGeometry x="0.0435" y="15" relative="1" as="geometry">
+            <mxPoint x="470" y="90" as="sourcePoint" />
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="nuOlMz1gKqsYvPSizzgd-34" value="&lt;font style=&quot;font-size: 20px;&quot;&gt;Cache Válido?&lt;/font&gt;" style="rhombus;whiteSpace=wrap;html=1;fillColor=none;strokeColor=light-dark(#4A5568,#0000CC);strokeWidth=2;fontColor=#FFFFFF;fontSize=15;fontStyle=1;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="360" y="-30" width="166" height="145" as="geometry" />
+        </mxCell>
+        <mxCell id="nuOlMz1gKqsYvPSizzgd-35" value="Retornar do Cache" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#2d3748;strokeColor=#4a5568;strokeWidth=2;fontColor=#FFFFFF;fontSize=20;fontStyle=0;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="575" y="-15" width="140" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="nuOlMz1gKqsYvPSizzgd-40" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;labelBackgroundColor=none;fontColor=light-dark(#000000,#000000);strokeWidth=2;strokeColor=light-dark(#000000,#000000);" edge="1" parent="1" source="nuOlMz1gKqsYvPSizzgd-38" target="nuOlMz1gKqsYvPSizzgd-7">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="nuOlMz1gKqsYvPSizzgd-38" value="Cache Expirado" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#2d3748;strokeColor=#4a5568;strokeWidth=2;fontColor=#FFFFFF;fontSize=20;fontStyle=0;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="570" y="65" width="140" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="nuOlMz1gKqsYvPSizzgd-46" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=light-dark(#000000,#000000);labelBackgroundColor=none;fontColor=light-dark(#000000,#000000);fontSize=15;" edge="1" parent="1" source="nuOlMz1gKqsYvPSizzgd-43" target="nuOlMz1gKqsYvPSizzgd-44">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="nuOlMz1gKqsYvPSizzgd-43" value="Salvar no Cache" style="rounded=1;whiteSpace=wrap;html=1;fillColor=light-dark(#0000CC,#0000CC);strokeColor=none;strokeWidth=2;fontColor=default;fontSize=20;fontStyle=1;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="900" y="-15" width="130" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="nuOlMz1gKqsYvPSizzgd-44" value="Retornar Dados Frescos" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#2d3748;strokeColor=#4a5568;strokeWidth=2;fontColor=#FFFFFF;fontSize=20;fontStyle=0;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="1060" y="-25" width="120" height="70" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

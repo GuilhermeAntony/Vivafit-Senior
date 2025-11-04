@@ -1,0 +1,10 @@
+Id,Name,Shape Library,Source,Destination,Label,Source Cardinality,Destination Cardinality
+rel1,Relationship,ERD,AUTH_USERS,PROFILES,possui perfil,1,1
+rel2,Relationship,ERD,AUTH_USERS,USER_ROLES,tem papéis,1,N
+rel3,Relationship,ERD,AUTH_USERS,WORKOUTS,cria treinos,1,N
+rel4,Relationship,ERD,WORKOUTS,WORKOUT_EXERCISES,contém exercícios,1,N
+rel5,Relationship,ERD,EXERCISES,WORKOUT_EXERCISES,incluído em,1,N
+rel6,Relationship,ERD,AUTH_USERS,USER_PROGRESS,registra,1,N
+rel7,Relationship,ERD,WORKOUTS,USER_PROGRESS,rastreado em,1,N
+rel8,Relationship,ERD,EXERCISES,USER_PROGRESS,executado em,1,N
+rel9,Relationship,ERD,AUTH_USERS,USER_ACHIEVEMENTS,conquista,1,N

@@ -1,0 +1,203 @@
+{
+  "tables": [
+    {
+      "name": "auth_users",
+      "note": "Tabela gerenciada pelo Supabase Auth",
+      "color": "#E3F2FD",
+      "fields": [
+        { "name": "id", "type": "UUID", "pk": true, "note": "Primary Key" },
+        { "name": "email", "type": "VARCHAR(255)", "required": true },
+        { "name": "created_at", "type": "TIMESTAMP" },
+        { "name": "raw_user_meta_data", "type": "JSONB" }
+      ]
+    },
+    {
+      "name": "profiles",
+      "note": "Perfil personalizado do usuário",
+      "color": "#E8F5E9",
+      "fields": [
+        { "name": "id", "type": "UUID", "pk": true },
+        { "name": "user_id", "type": "UUID", "fk": "auth_users.id", "unique": true, "required": true },
+        { "name": "display_name", "type": "TEXT" },
+        { "name": "age", "type": "INTEGER", "note": "50-75 anos" },
+        { "name": "weight", "type": "NUMERIC", "note": "Peso em kg" },
+        { "name": "activity_level", "type": "ENUM", "values": ["low", "sedentary", "high"] },
+        { "name": "health_limitations", "type": "TEXT" },
+        { "name": "created_at", "type": "TIMESTAMP" },
+        { "name": "updated_at", "type": "TIMESTAMP" }
+      ]
+    },
+    {
+      "name": "user_roles",
+      "note": "Controle de permissões",
+      "color": "#FFF3E0",
+      "fields": [
+        { "name": "id", "type": "UUID", "pk": true },
+        { "name": "user_id", "type": "UUID", "fk": "auth_users.id", "required": true },
+        { "name": "role", "type": "ENUM", "values": ["admin", "user"], "required": true },
+        { "name": "created_at", "type": "TIMESTAMP" }
+      ],
+      "constraints": [
+        { "type": "UNIQUE", "fields": ["user_id", "role"] }
+      ]
+    },
+    {
+      "name": "exercises",
+      "note": "Catálogo de exercícios para idosos",
+      "color": "#F3E5F5",
+      "fields": [
+        { "name": "id", "type": "UUID", "pk": true },
+        { "name": "name", "type": "TEXT", "required": true },
+        { "name": "description", "type": "TEXT" },
+        { "name": "category", "type": "ENUM", "values": ["cardio", "strength", "flexibility", "balance"] },
+        { "name": "duration", "type": "INTEGER", "note": "segundos" },
+        { "name": "difficulty", "type": "INTEGER", "note": "1-5" },
+        { "name": "instructions", "type": "TEXT" },
+        { "name": "image_url", "type": "TEXT" },
+        { "name": "video_url", "type": "TEXT" },
+        { "name": "is_active", "type": "BOOLEAN" },
+        { "name": "created_at", "type": "TIMESTAMP" },
+        { "name": "updated_at", "type": "TIMESTAMP" }
+      ]
+    },
+    {
+      "name": "workouts",
+      "note": "Treinos personalizados dos usuários",
+      "color": "#FFF9C4",
+      "fields": [
+        { "name": "id", "type": "UUID", "pk": true },
+        { "name": "user_id", "type": "UUID", "fk": "auth_users.id", "required": true },
+        { "name": "name", "type": "TEXT", "required": true },
+        { "name": "description", "type": "TEXT" },
+        { "name": "total_duration", "type": "INTEGER" },
+        { "name": "exercises_completed", "type": "INTEGER" },
+        { "name": "total_exercises", "type": "INTEGER" },
+        { "name": "completed_at", "type": "TIMESTAMP", "note": "NULL se não finalizado" },
+        { "name": "created_at", "type": "TIMESTAMP" }
+      ]
+    },
+    {
+      "name": "workout_exercises",
+      "note": "Tabela de junção N:M",
+      "color": "#F5F5F5",
+      "fields": [
+        { "name": "id", "type": "UUID", "pk": true },
+        { "name": "workout_id", "type": "UUID", "fk": "workouts.id", "required": true },
+        { "name": "exercise_id", "type": "UUID", "fk": "exercises.id", "required": true },
+        { "name": "order_index", "type": "INTEGER", "required": true },
+        { "name": "duration", "type": "INTEGER" },
+        { "name": "completed_at", "type": "TIMESTAMP" },
+        { "name": "created_at", "type": "TIMESTAMP" }
+      ]
+    },
+    {
+      "name": "user_progress",
+      "note": "Histórico de progresso",
+      "color": "#E0F7FA",
+      "fields": [
+        { "name": "id", "type": "UUID", "pk": true },
+        { "name": "user_id", "type": "UUID", "fk": "auth_users.id", "required": true },
+        { "name": "workout_id", "type": "UUID", "fk": "workouts.id", "note": "opcional" },
+        { "name": "exercise_id", "type": "UUID", "fk": "exercises.id" },
+        { "name": "duration", "type": "INTEGER", "required": true },
+        { "name": "calories_burned", "type": "INTEGER" },
+        { "name": "completed_at", "type": "TIMESTAMP" }
+      ]
+    },
+    {
+      "name": "user_achievements",
+      "note": "Sistema de conquistas",
+      "color": "#FCE4EC",
+      "fields": [
+        { "name": "id", "type": "UUID", "pk": true },
+        { "name": "user_id", "type": "UUID", "fk": "auth_users.id", "required": true },
+        { "name": "achievement_type", "type": "TEXT", "required": true },
+        { "name": "achievement_name", "type": "TEXT", "required": true },
+        { "name": "description", "type": "TEXT" },
+        { "name": "earned_at", "type": "TIMESTAMP" }
+      ]
+    }
+  ],
+  "relationships": [
+    {
+      "source": "auth_users",
+      "target": "profiles",
+      "type": "one-to-one",
+      "label": "possui perfil único",
+      "sourceCardinality": "1",
+      "targetCardinality": "1"
+    },
+    {
+      "source": "auth_users",
+      "target": "user_roles",
+      "type": "one-to-many",
+      "label": "tem papéis",
+      "sourceCardinality": "1",
+      "targetCardinality": "N"
+    },
+    {
+      "source": "auth_users",
+      "target": "workouts",
+      "type": "one-to-many",
+      "label": "cria treinos",
+      "sourceCardinality": "1",
+      "targetCardinality": "N"
+    },
+    {
+      "source": "workouts",
+      "target": "workout_exercises",
+      "type": "one-to-many",
+      "label": "contém exercícios",
+      "sourceCardinality": "1",
+      "targetCardinality": "N"
+    },
+    {
+      "source": "exercises",
+      "target": "workout_exercises",
+      "type": "one-to-many",
+      "label": "incluído em treinos",
+      "sourceCardinality": "1",
+      "targetCardinality": "N"
+    },
+    {
+      "source": "auth_users",
+      "target": "user_progress",
+      "type": "one-to-many",
+      "label": "registra progresso",
+      "sourceCardinality": "1",
+      "targetCardinality": "N"
+    },
+    {
+      "source": "workouts",
+      "target": "user_progress",
+      "type": "one-to-many",
+      "label": "rastreado em",
+      "sourceCardinality": "1",
+      "targetCardinality": "N",
+      "optional": true
+    },
+    {
+      "source": "exercises",
+      "target": "user_progress",
+      "type": "one-to-many",
+      "label": "executado em",
+      "sourceCardinality": "1",
+      "targetCardinality": "N"
+    },
+    {
+      "source": "auth_users",
+      "target": "user_achievements",
+      "type": "one-to-many",
+      "label": "conquista",
+      "sourceCardinality": "1",
+      "targetCardinality": "N"
+    }
+  ],
+  "metadata": {
+    "title": "VivaFit Seniors - Diagrama de Entidade-Relacionamento",
+    "description": "Sistema de fitness para idosos (50-75 anos)",
+    "database": "PostgreSQL + Supabase",
+    "version": "1.0",
+    "date": "Novembro 2025"
+  }
+}

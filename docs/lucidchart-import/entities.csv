@@ -1,0 +1,9 @@
+Name,Shape Library,Page ID,Contained By,Group,Line Source,Line Destination,Source Arrow,Destination Arrow,Text Area 1,Text Area 2,Text Area 3
+AUTH_USERS,ERD,Page-1,,,,,,,id: UUID [PK],email: VARCHAR,created_at: TIMESTAMP
+PROFILES,ERD,Page-1,,,,,,,id: UUID [PK],user_id: UUID [FK UNIQUE],display_name: TEXT
+USER_ROLES,ERD,Page-1,,,,,,,id: UUID [PK],user_id: UUID [FK],role: ENUM
+EXERCISES,ERD,Page-1,,,,,,,id: UUID [PK],name: TEXT,description: TEXT
+WORKOUTS,ERD,Page-1,,,,,,,id: UUID [PK],user_id: UUID [FK],name: TEXT
+WORKOUT_EXERCISES,ERD,Page-1,,,,,,,id: UUID [PK],workout_id: UUID [FK],exercise_id: UUID [FK]
+USER_PROGRESS,ERD,Page-1,,,,,,,id: UUID [PK],user_id: UUID [FK],workout_id: UUID [FK]
+USER_ACHIEVEMENTS,ERD,Page-1,,,,,,,id: UUID [PK],user_id: UUID [FK],achievement_type: TEXT

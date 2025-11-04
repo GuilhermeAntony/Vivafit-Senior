@@ -1,0 +1,124 @@
+// VivaFit Seniors - Database Schema
+// Diagrama de Entidade-Relacionamento
+// Para importar: https://dbdiagram.io/d
+
+// Tabela de Usuários (Supabase Auth)
+Table auth_users {
+  id uuid [pk, note: 'Primary Key']
+  email varchar(255) [not null]
+  created_at timestamp
+  raw_user_meta_data jsonb
+  
+  Note: 'Tabela gerenciada pelo Supabase Auth para autenticação de usuários'
+}
+
+// Perfil do Usuário
+Table profiles {
+  id uuid [pk]
+  user_id uuid [unique, not null, ref: - auth_users.id, note: 'FK única para auth.users']
+  display_name text [note: 'Nome de exibição do usuário']
+  age integer [note: 'Idade do usuário (50-75 anos)']
+  weight numeric [note: 'Peso corporal em kg']
+  activity_level varchar(20) [note: 'low, sedentary, high (baseado WHO 2020)']
+  health_limitations text [note: 'Restrições de saúde (ex: dores no joelho)']
+  created_at timestamp [default: `now()`]
+  updated_at timestamp [default: `now()`]
+  
+  Note: 'Perfil personalizado do usuário com dados demográficos e de saúde para idosos'
+}
+
+// Papéis de Usuário
+Table user_roles {
+  id uuid [pk]
+  user_id uuid [not null, ref: > auth_users.id]
+  role varchar(20) [not null, note: 'admin ou user']
+  created_at timestamp [default: `now()`]
+  
+  indexes {
+    (user_id, role) [unique]
+  }
+  
+  Note: 'Controla permissões e papéis dos usuários no sistema'
+}
+
+// Catálogo de Exercícios
+Table exercises {
+  id uuid [pk]
+  name text [not null, note: 'Nome do exercício']
+  description text
+  category varchar(20) [not null, note: 'cardio, strength, flexibility, balance']
+  duration integer [not null, note: 'Duração padrão em segundos']
+  difficulty integer [note: 'Nível de 1 a 5']
+  instructions text [note: 'Instruções passo a passo']
+  image_url text
+  video_url text
+  is_active boolean [default: true]
+  created_at timestamp [default: `now()`]
+  updated_at timestamp [default: `now()`]
+  
+  Note: 'Catálogo de exercícios adaptados para público idoso (50-75 anos)'
+}
+
+// Treinos Personalizados
+Table workouts {
+  id uuid [pk]
+  user_id uuid [not null, ref: > auth_users.id]
+  name text [not null]
+  description text
+  total_duration integer [default: 0, note: 'Duração total em segundos']
+  exercises_completed integer [default: 0]
+  total_exercises integer [default: 0]
+  completed_at timestamp [note: 'NULL se não finalizado']
+  created_at timestamp [default: `now()`]
+  
+  Note: 'Treinos personalizados criados pelos usuários'
+}
+
+// Tabela de Junção: Exercícios em cada Treino
+Table workout_exercises {
+  id uuid [pk]
+  workout_id uuid [not null, ref: > workouts.id]
+  exercise_id uuid [not null, ref: > exercises.id]
+  order_index integer [not null, note: 'Ordem de execução']
+  duration integer [note: 'Duração customizada (sobrescreve padrão)']
+  completed_at timestamp
+  created_at timestamp [default: `now()`]
+  
+  Note: 'Relacionamento N:M entre workouts e exercises'
+}
+
+// Histórico de Progresso
+Table user_progress {
+  id uuid [pk]
+  user_id uuid [not null, ref: > auth_users.id]
+  workout_id uuid [ref: > workouts.id, note: 'Opcional']
+  exercise_id uuid [ref: > exercises.id]
+  duration integer [not null, note: 'Tempo efetivo de execução']
+  calories_burned integer
+  completed_at timestamp [default: `now()`]
+  
+  Note: 'Histórico de execução de exercícios e métricas de progresso'
+}
+
+// Sistema de Conquistas
+Table user_achievements {
+  id uuid [pk]
+  user_id uuid [not null, ref: > auth_users.id]
+  achievement_type text [not null, note: 'Tipo (streak, milestone, etc)']
+  achievement_name text [not null]
+  description text
+  earned_at timestamp [default: `now()`]
+  
+  Note: 'Sistema de gamificação com conquistas do usuário'
+}
+
+// Relacionamentos e Cardinalidade
+// auth_users ||--|| profiles : "possui perfil único"
+// auth_users ||--o{ user_roles : "tem papéis"
+// auth_users ||--o{ workouts : "cria treinos"
+// auth_users ||--o{ user_progress : "registra progresso"
+// auth_users ||--o{ user_achievements : "conquista"
+// workouts ||--o{ workout_exercises : "contém exercícios"
+// exercises ||--o{ workout_exercises : "incluído em treinos"
+// workouts ||--o{ user_progress : "rastreado em"
+// exercises ||--o{ user_progress : "executado em"
