@@ -1,19 +1,52 @@
-const appJson = require('./app.json');
-
 module.exports = () => {
-  const expo = { ...(appJson.expo || {}) };
-
-  // Ensure required plugins array exists and includes expo-web-browser
-  expo.plugins = Array.isArray(expo.plugins) ? expo.plugins.slice() : [];
-  if (!expo.plugins.includes('expo-web-browser')) {
-    expo.plugins.push('expo-web-browser');
-  }
-
-  expo.extra = expo.extra || {};
-  expo.extra.supabase = {
-    url: process.env.SUPABASE_URL || (expo.extra.supabase && expo.extra.supabase.url) || 'https://your-supabase-url.supabase.co',
-    anonKey: process.env.SUPABASE_ANON_KEY || (expo.extra.supabase && expo.extra.supabase.anonKey) || 'your-anon-key',
+  return {
+    expo: {
+      owner: "antony13",
+      name: "VivaFit Seniors",
+      slug: "mobile",
+      version: "1.0.1",
+      sdkVersion: "54.0.0",
+      platforms: ["ios", "android", "web"],
+      plugins: [
+        "@react-native-google-signin/google-signin",
+        "expo-web-browser"
+      ],
+      orientation: "portrait",
+      icon: "./assets/icon.png",
+      userInterfaceStyle: "light",
+      newArchEnabled: false,
+      splash: {
+        image: "./assets/splash-icon.png",
+        resizeMode: "contain",
+        backgroundColor: "#ffffff"
+      },
+      ios: {
+        supportsTablet: true,
+        bundleIdentifier: "com.antony13.Mobile"
+      },
+      android: {
+        adaptiveIcon: {
+          foregroundImage: "./assets/adaptive-icon.png",
+          backgroundColor: "#ffffff"
+        },
+        edgeToEdgeEnabled: true,
+        predictiveBackGestureEnabled: false,
+        package: "com.antony13.Mobile"
+      },
+      scheme: "com.antony13.mobile",
+      web: {
+        bundler: "metro",
+        favicon: "./assets/favicon.png"
+      },
+      extra: {
+        eas: {
+          projectId: "06e6ae28-e20f-4a60-ad01-207a8ee39834"
+        },
+        supabase: {
+          url: process.env.SUPABASE_URL || "https://misptjgsftdtqfvqsneq.supabase.co",
+          anonKey: process.env.SUPABASE_ANON_KEY || "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im1pc3B0amdzZnRkdHFmdnFzbmVxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTczNjgyODEsImV4cCI6MjA3Mjk0NDI4MX0.LkjTMPYMUmeWBSyemdl2WbPyA42hx_9FXYH0r5zhnoA"
+        }
+      }
+    }
   };
-  
-  return { expo };
 };
