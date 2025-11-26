@@ -102,17 +102,16 @@ export function ActivityLevelPicker({
       <View style={{
         flexDirection: 'row',
         alignItems: 'flex-end',
-        justifyContent: 'center',
-        gap: isSenior ? 12 : 8,
+        justifyContent: 'space-between',
+        gap: isSenior ? 16 : 12,
         paddingHorizontal: SPACING.md,
-        minHeight: isSenior ? 100 : 80,
+        minHeight: isSenior ? 120 : 100,
       }}>
         {ACTIVITY_LEVELS.map((level, idx) => {
-          const isActive = value >= level.level;
           const isCurrent = value === level.level;
           const barHeight = isSenior 
-            ? 50 + (idx * 20) 
-            : 40 + (idx * 15);
+            ? 60 + (idx * 25) 
+            : 50 + (idx * 20);
 
           return (
             <TouchableOpacity
@@ -122,24 +121,23 @@ export function ActivityLevelPicker({
               style={{
                 flex: 1,
                 height: barHeight,
-                maxWidth: isSenior ? 80 : 60,
-                backgroundColor: isActive ? level.color : '#e0e0e0',
+                maxWidth: isSenior ? 90 : 70,
+                backgroundColor: isCurrent ? level.color : '#e0e0e0',
                 borderRadius: 12,
                 justifyContent: 'center',
                 alignItems: 'center',
-                borderWidth: isCurrent ? 3 : 0,
-                borderColor: '#fff',
+                borderWidth: isCurrent ? 4 : 2,
+                borderColor: isCurrent ? '#fff' : 'transparent',
                 shadowColor: isCurrent ? level.color : '#000',
                 shadowOffset: { width: 0, height: isCurrent ? 4 : 2 },
-                shadowOpacity: isCurrent ? 0.3 : 0.1,
-                shadowRadius: isCurrent ? 6 : 3,
-                elevation: isCurrent ? 8 : 2,
-                transform: [{ scale: isCurrent ? 1.05 : 1 }],
+                shadowOpacity: isCurrent ? 0.4 : 0.1,
+                shadowRadius: isCurrent ? 8 : 3,
+                elevation: isCurrent ? 10 : 2,
               }}
             >
               <Text style={{ 
-                fontSize: isSenior ? 28 : 24,
-                opacity: isActive ? 1 : 0.3,
+                fontSize: isSenior ? 32 : 26,
+                opacity: isCurrent ? 1 : 0.4,
               }}>
                 {level.icon}
               </Text>

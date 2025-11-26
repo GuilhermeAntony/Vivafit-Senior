@@ -1,64 +1,50 @@
-    const https = require('https');
-    const http = require('http');
-    const fs = require('fs');
-    const path = require('path');
+const fs = require('fs');
+const path = require('path');
 
-const images = [
-  { id: 'caminhada-lugar', url: 'https://picsum.photos/1200/900?random=1' },
-  { id: 'alongamento-bracos', url: 'https://picsum.photos/1200/900?random=2' },
-  { id: 'exercicio-cadeira', url: 'https://picsum.photos/1200/900?random=3' },
-  { id: 'equilibrio-apoio', url: 'https://picsum.photos/1200/900?random=4' },
-  { id: 'respiracao-profunda', url: 'https://picsum.photos/1200/900?random=5' },
-  { id: 'flexao-parede', url: 'https://picsum.photos/1200/900?random=6' },
-  { id: 'marcha-estacionaria', url: 'https://picsum.photos/1200/900?random=7' },
-  { id: 'rotacao-tornozelos', url: 'https://picsum.photos/1200/900?random=8' },
-  { id: 'agachamento-cadeira', url: 'https://picsum.photos/1200/900?random=9' },
-  { id: 'equilibrio-uma-perna', url: 'https://picsum.photos/1200/900?random=10' }
+// Script para verificar se as imagens dos exercícios existem
+// As imagens já devem estar em assets/exercises/
+
+const exerciseImages = [
+  'caminhada-lugar.jpg',
+  'alongamento-bracos.jpg',
+  'exercicio-cadeira.jpg',
+  'equilibrio-apoio.jpg',
+  'respiracao-profunda.jpg',
+  'flexao-parede.jpg',
+  'marcha-estacionaria.jpg',
+  'rotacao-tornozelos.jpg',
+  'agachamento-cadeira.jpg',
+  'equilibrio-uma-perna.jpg'
 ];
 
-const outDir = path.join(__dirname, '..', 'assets', 'exercises');
-if (!fs.existsSync(outDir)) fs.mkdirSync(outDir, { recursive: true });
+const exercisesDir = path.join(__dirname, '..', 'assets', 'exercises');
 
-function download(url, dest) {
-  return new Promise((resolve, reject) => {
-    const client = url.startsWith('https') ? https : http;
-    const req = client.get(url, (res) => {
-      // Follow redirects
-      if (res.statusCode >= 300 && res.statusCode < 400 && res.headers.location) {
-        return resolve(download(res.headers.location, dest));
-      }
+console.log('Verificando imagens dos exercícios...\n');
 
-      const contentType = res.headers['content-type'] || '';
-      if (!contentType.startsWith('image/')) {
-        // consume body and reject
-        let body = '';
-        res.setEncoding('utf8');
-        res.on('data', (chunk) => (body += chunk));
-        res.on('end', () => reject(new Error('Invalid content-type: ' + contentType)));
-        return;
-      }
+let allImagesExist = true;
 
-      const file = fs.createWriteStream(dest);
-      res.pipe(file);
-      file.on('finish', () => file.close(resolve));
-      file.on('error', (err) => {
-        fs.unlink(dest, () => {});
-        reject(err);
-      });
-    });
-    req.on('error', (err) => reject(err));
-  });
+for (const imageName of exerciseImages) {
+  const imagePath = path.join(exercisesDir, imageName);
+  const exists = fs.existsSync(imagePath);
+  
+  if (exists) {
+    const stats = fs.statSync(imagePath);
+    const sizeKB = (stats.size / 1024).toFixed(2);
+    console.log(`✅ ${imageName} (${sizeKB} KB)`);
+  } else {
+    console.log(`❌ ${imageName} - FALTANDO`);
+    allImagesExist = false;
+  }
 }
 
-(async () => {
-  for (const item of images) {
-    const dest = path.join(outDir, `${item.id}.jpg`);
-    try {
-      console.log('Downloading', item.url, '->', dest);
-      await download(item.url, dest);
-    } catch (e) {
-      console.error('Failed to download', item.url, e.message || e);
-    }
-  }
-  console.log('Done');
-})();
+console.log('\n' + '='.repeat(50));
+
+if (allImagesExist) {
+  console.log('✅ Todas as imagens estão presentes!');
+  console.log(`📁 Localização: ${exercisesDir}`);
+} else {
+  console.log('❌ Algumas imagens estão faltando!');
+  console.log('Execute o script de download ou adicione as imagens manualmente.');
+}
+
+console.log('='.repeat(50));

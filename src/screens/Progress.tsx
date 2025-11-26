@@ -21,24 +21,49 @@ export default function Progress() {
   useEffect(() => {
     const load = async () => {
       try {
-        // Primeiro carregar dados locais
-        const local = JSON.parse(await AsyncStorage.getItem('completedWorkouts') || '[]');
-        setItems((local || []).reverse());
+        let finalItems: Completed[] = [];
         
-        // Se Supabase estiver configurado, tentar sincronizar
+        // Primeiro carregar dados locais
+        const localData = await AsyncStorage.getItem('completedWorkouts');
+        const local = localData ? JSON.parse(localData) : [];
+        finalItems = (local || []).reverse();
+        setItems(finalItems);
+        
+        // Se Supabase estiver configurado, tentar buscar dados da nuvem
         if (isSupabaseConfigured()) {
           try {
-            const { data, error } = await supabase.from('completed_workouts').select('*').order('date', { ascending: false }).limit(200);
-            if (!error && data && data.length) {
-              setItems(data as Completed[]);
+            const { data: { user } } = await supabase.auth.getUser();
+            
+            if (user) {
+              const { data, error } = await supabase
+                .from('completed_workouts')
+                .select('*')
+                .eq('user_id', user.id)
+                .order('date', { ascending: false })
+                .limit(200);
+              
+              if (!error && data && data.length > 0) {
+                // Usar dados do Supabase como fonte principal
+                finalItems = data.map(item => ({
+                  date: item.date,
+                  steps: item.steps || 0,
+                  exercise: item.exercise_name || item.exercise || null
+                }));
+                setItems(finalItems);
+                console.log(`✅ ${data.length} treinos carregados do Supabase`);
+              } else if (error) {
+                console.log('⚠️ Erro ao buscar do Supabase, usando dados locais:', error.message);
+              }
+            } else {
+              console.log('ℹ️ Usuário não autenticado, usando dados locais');
             }
           } catch (supabaseErr) {
-            console.log(' Erro ao conectar com Supabase, usando dados locais');
+            console.log('⚠️ Erro ao conectar com Supabase, usando dados locais');
           }
         }
 
-        // Atualiza conquistas com heurística simples baseada no número de treinos
-        const total = (local || []).length;
+        // Atualiza conquistas com base no total de treinos
+        const total = finalItems.length;
         const updated = PREDEFINED_ACHIEVEMENTS.map(a => ({
           ...a,
           unlocked: total >= a.maxProgress,
@@ -47,15 +72,21 @@ export default function Progress() {
         setAchievements(updated);
       } catch (err) {
         console.error('Erro ao carregar histórico:', err);
-        const local = JSON.parse(await AsyncStorage.getItem('completedWorkouts') || '[]');
-        setItems((local || []).reverse());
-        const total = (local || []).length;
-        const updated = PREDEFINED_ACHIEVEMENTS.map(a => ({
-          ...a,
-          unlocked: total >= a.maxProgress,
-          progress: Math.min(total, a.maxProgress)
-        }));
-        setAchievements(updated);
+        // Fallback para dados locais em caso de erro
+        try {
+          const localData = await AsyncStorage.getItem('completedWorkouts');
+          const local = localData ? JSON.parse(localData) : [];
+          setItems((local || []).reverse());
+          const total = (local || []).length;
+          const updated = PREDEFINED_ACHIEVEMENTS.map(a => ({
+            ...a,
+            unlocked: total >= a.maxProgress,
+            progress: Math.min(total, a.maxProgress)
+          }));
+          setAchievements(updated);
+        } catch (localErr) {
+          console.error('Erro ao carregar dados locais:', localErr);
+        }
       } finally {
         setLoading(false);
       }

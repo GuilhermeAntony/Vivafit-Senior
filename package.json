@@ -7,7 +7,15 @@
     "download:images": "node ./scripts/download-exercise-images.js",
     "android": "expo run:android",
     "ios": "expo run:ios",
-    "web": "expo start --web"
+    "web": "expo start --web",
+    "build:preview": "eas build --profile preview --platform android",
+    "build:production": "eas build --profile production --platform android",
+    "build:interactive": "./scripts/build-production.sh",
+    "build:download": "eas build:download --platform android",
+    "validate": "node scripts/validate-supabase-fix.js",
+    "test:types": "tsc --noEmit",
+    "test:all": "npm run test:types && npm run validate",
+    "deploy": "eas submit --platform android --profile production"
   },
   "dependencies": {
     "@react-native-async-storage/async-storage": "^2.2.0",
@@ -16,7 +24,7 @@
     "@react-navigation/native": "^6.1.7",
     "@react-navigation/native-stack": "^6.9.12",
     "@supabase/supabase-js": "^2.57.4",
-    "expo": "54.0.22",
+    "expo": "54.0.23",
     "expo-auth-session": "~7.0.8",
     "expo-constants": "^18.0.9",
     "expo-crypto": "^15.0.7",

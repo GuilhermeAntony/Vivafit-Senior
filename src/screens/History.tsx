@@ -16,28 +16,55 @@ export default function History({ navigation }: Props) {
     let mounted = true;
     const load = async () => {
       try {
-        // Primeiro tentar carregar do local
-        const local = JSON.parse(await AsyncStorage.getItem('completedWorkouts') || '[]');
-        if (mounted) setItems((local || []).reverse());
+        let finalItems: Completed[] = [];
         
-        // Se Supabase estiver configurado, tentar sincronizar
+        // Primeiro tentar carregar do local
+        const localData = await AsyncStorage.getItem('completedWorkouts');
+        const local = localData ? JSON.parse(localData) : [];
+        finalItems = (local || []).reverse();
+        if (mounted) setItems(finalItems);
+        
+        // Se Supabase estiver configurado, tentar buscar dados da nuvem
         if (isSupabaseConfigured()) {
           try {
-            const { data, error } = await supabase.from('completed_workouts').select('*').order('date', { ascending: false }).limit(500);
-            if (!error && data && mounted) {
-              setItems(data as Completed[]);
+            const { data: { user } } = await supabase.auth.getUser();
+            
+            if (user) {
+              const { data, error } = await supabase
+                .from('completed_workouts')
+                .select('*')
+                .eq('user_id', user.id)
+                .order('date', { ascending: false })
+                .limit(500);
+              
+              if (!error && data && mounted) {
+                // Mapear dados do Supabase para formato esperado
+                finalItems = data.map(item => ({
+                  id: item.id,
+                  date: item.date,
+                  steps: item.steps || 0,
+                  exercise: item.exercise_name || item.exercise || null
+                }));
+                setItems(finalItems);
+                console.log(`✅ ${data.length} treinos carregados do Supabase no histórico`);
+              } else if (error) {
+                console.log('⚠️ Erro ao buscar histórico do Supabase:', error.message);
+              }
+            } else {
+              console.log('ℹ️ Usuário não autenticado, usando dados locais no histórico');
             }
           } catch (supabaseErr) {
-            console.log(' Erro ao conectar com Supabase, usando dados locais');
+            console.log('⚠️ Erro ao conectar com Supabase no histórico, usando dados locais');
           }
         }
       } catch (err) {
         // fallback to local
         try {
-          const local = JSON.parse(await AsyncStorage.getItem('completedWorkouts') || '[]');
+          const localData = await AsyncStorage.getItem('completedWorkouts');
+          const local = localData ? JSON.parse(localData) : [];
           if (mounted) setItems((local || []).reverse());
         } catch (e) {
-          // ignore
+          console.error('Erro ao carregar dados locais:', e);
         }
       } finally {
         if (mounted) setLoading(false);

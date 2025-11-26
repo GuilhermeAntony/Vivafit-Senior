@@ -5,6 +5,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { RootStackParamList } from '../navigation';
 import Card, { CardContent, CardHeader } from '../components/ui/card';
 import Progress from '../components/ui/progress';
+import { supabase, isSupabaseConfigured } from '../lib/supabase';
 import {
   convertExerciseToWorkout,
   getWorkoutByActivityLevel,
@@ -14,6 +15,7 @@ import {
 type Props = NativeStackScreenProps<RootStackParamList, 'Workout'>;
 
 export default function Workout({ route, navigation }: Props) {
+  const [isFinalizing, setIsFinalizing] = useState(false);
   const exercise = route.params?.exercise;
 
   const [workoutSteps, setWorkoutSteps] = useState<WorkoutStep[]>([]);
@@ -131,16 +133,68 @@ export default function Workout({ route, navigation }: Props) {
   };
 
   const finishAndSave = async () => {
+    setIsFinalizing(true);
+    // Bloqueio de 1 minuto entre finalizações
+    const lastFinish = await AsyncStorage.getItem('lastWorkoutFinish');
+    const now = Date.now();
+    if (lastFinish && now - parseInt(lastFinish, 10) < 60000) {
+      Alert.alert('Aguarde', 'Você só pode finalizar um treino a cada 1 minuto.');
+      setIsFinalizing(false);
+      return;
+    }
+  await AsyncStorage.setItem('lastWorkoutFinish', now.toString());
+  setIsFinalizing(false);
     try {
       const today = new Date().toISOString().split('T')[0];
+      const exerciseName = exercise?.name || 'Treino Personalizado';
+      
+      // Salvar localmente primeiro (garantia de backup)
       const completedWorkouts = await AsyncStorage.getItem('completedWorkouts');
       const workouts = completedWorkouts ? JSON.parse(completedWorkouts) : [];
-      workouts.push({
+      const newWorkout = {
         date: today,
         steps: workoutSteps.length,
-        exerciseName: exercise?.name || 'Treino Personalizado'
-      });
+        exerciseName: exerciseName,
+        duration_seconds: workoutSteps.reduce((sum, step) => sum + step.duration, 0)
+      };
+      workouts.push(newWorkout);
       await AsyncStorage.setItem('completedWorkouts', JSON.stringify(workouts));
+
+      // Tentar salvar no Supabase se estiver configurado
+      if (isSupabaseConfigured()) {
+        try {
+          const { data: { user } } = await supabase.auth.getUser();
+          
+          if (user) {
+            const { error } = await supabase.from('completed_workouts').insert({
+              user_id: user.id,
+              date: today,
+              steps: workoutSteps.length,
+              exercise: exerciseName,
+              exercise_name: exerciseName,
+              duration_seconds: newWorkout.duration_seconds,
+              metadata: {
+                workoutSteps: workoutSteps.length,
+                completedAt: new Date().toISOString()
+              }
+            });
+
+            if (error) {
+              console.error('❌ Erro ao salvar no Supabase:', error);
+              // Não falhar o fluxo, dados estão salvos localmente
+            } else {
+              console.log('✅ Treino salvo no Supabase com sucesso!');
+            }
+          } else {
+            console.log('⚠️ Usuário não autenticado, salvando apenas localmente');
+          }
+        } catch (supabaseErr) {
+          console.error('⚠️ Erro ao conectar com Supabase:', supabaseErr);
+          // Continuar mesmo com erro, dados estão salvos localmente
+        }
+      } else {
+        console.log('ℹ️ Supabase não configurado, salvando apenas localmente');
+      }
 
       setWorkoutComplete(true);
       setIsActive(false);
@@ -270,7 +324,8 @@ export default function Workout({ route, navigation }: Props) {
 
         <TouchableOpacity
           onPress={finishAndSave}
-          style={{ backgroundColor: '#0ea5a3', borderRadius: 8, padding: 12, alignItems: 'center' }}
+          style={{ backgroundColor: '#0ea5a3', borderRadius: 8, padding: 12, alignItems: 'center', opacity: isFinalizing ? 0.5 : 1 }}
+          disabled={isFinalizing}
         >
           <Text style={{ color: '#fff', fontWeight: '700' }}>Finalizar Treino</Text>
         </TouchableOpacity>
