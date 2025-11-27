@@ -19,6 +19,14 @@
 
 **Versão:** 1.2.0 | **Tamanho:** ~50 MB | **Plataforma:** Android 5.0+
 
+---
+
+### 📱 Ou escaneie o QR Code
+
+<img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://expo.dev/artifacts/eas/oY8T9CyJ1rhg4gkfb8p8vE.apk" alt="QR Code para Download do APK" />
+
+**Escaneie com a câmera do seu celular Android**
+
 </div>
 
 ### 📋 Como Instalar
