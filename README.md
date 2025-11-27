@@ -13,11 +13,11 @@
 
 <div align="center">
 
-### 🎯 Baixe agora e comece sua jornada fitness!
+###  Baixe agora e comece sua jornada fitness!
 
-[![Download APK](https://img.shields.io/badge/📱_Baixar_para_Android-APK-0ea5a3?style=for-the-badge&logo=android)](https://expo.dev/artifacts/eas/s8rCmPjY3mcTXJXSYWtgqx.apk)
+[![Download APK](https://img.shields.io/badge/_Baixar_para_Android-APK-0ea5a3?style=for-the-badge&logo=android)](https://expo.dev/artifacts/eas/oY8T9CyJ1rhg4gkfb8p8vE.apk)
 
-**Versão:** 1.0.0 | **Tamanho:** ~50 MB | **Plataforma:** Android 5.0+
+**Versão:** 1.2.0 | **Tamanho:** ~50 MB | **Plataforma:** Android 5.0+
 
 </div>
 
@@ -31,7 +31,7 @@
 4. **Toque em "Instalar"** e aguarde
 5. **Abra o app** e comece a treinar! 💪
 
-> ⚠️ **Nota:** O app requer conexão com internet para autenticação e sincronização de dados. Após o primeiro login, alguns recursos funcionam offline.
+>  **Nota:** O app requer conexão com internet para autenticação e sincronização de dados. Após o primeiro login, alguns recursos funcionam offline.
 
 ---
 
