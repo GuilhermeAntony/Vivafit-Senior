@@ -12,6 +12,7 @@ import { Text } from '../components/ui/text';
 import { Button } from '../components/ui/button';
 import { Input } from '../components/ui/input';
 import { SPACING, COLORS } from '../styles/designTokens';
+import { useFontSize } from '../contexts/FontSizeContext';
 
 type Props = NativeStackScreenProps<RootStackParamList, 'Settings'>;
 
@@ -19,7 +20,7 @@ export default function Settings({ navigation }: Props) {
   const [name, setName] = useState('');
   const [age, setAge] = useState('');
   const [notifications, setNotifications] = useState(true);
-  const [fontSize, setFontSize] = useState<'small'|'normal'|'large'>('normal');
+  const { fontSizePreference, setFontSizePreference } = useFontSize();
 
   useEffect(() => {
     (async () => {
@@ -34,7 +35,6 @@ export default function Settings({ navigation }: Props) {
         if (pref) {
           const pr = JSON.parse(pref);
           setNotifications(pr.notifications ?? true);
-          setFontSize(pr.fontSize ?? 'normal');
         }
       } catch (e) { /* ignore */ }
     })();
@@ -62,7 +62,9 @@ export default function Settings({ navigation }: Props) {
   };
 
   const savePrefs = async () => {
-    await AsyncStorage.setItem('prefs', JSON.stringify({ notifications, fontSize }));
+    const prefs = await AsyncStorage.getItem('prefs');
+    const current = prefs ? JSON.parse(prefs) : {};
+    await AsyncStorage.setItem('prefs', JSON.stringify({ ...current, notifications }));
     Alert.alert('Preferências', 'Preferências salvas.');
   };
 
@@ -152,18 +154,18 @@ export default function Settings({ navigation }: Props) {
                   {(['small','normal','large'] as const).map(sz => (
                     <TouchableOpacity 
                       key={sz} 
-                      onPress={() => setFontSize(sz)} 
+                      onPress={() => setFontSizePreference(sz)} 
                       style={{
                         paddingVertical: SPACING.sm,
                         paddingHorizontal: SPACING.md,
                         borderRadius: 8,
-                        backgroundColor: fontSize === sz ? COLORS.primary : COLORS.muted,
+                        backgroundColor: fontSizePreference === sz ? COLORS.primary : COLORS.muted,
                         flex: 1,
                         alignItems: 'center'
                       }}
                     >
                       <Text variant="body" style={{ 
-                        color: fontSize === sz ? COLORS.primaryForeground : COLORS.foreground 
+                        color: fontSizePreference === sz ? COLORS.primaryForeground : COLORS.foreground 
                       }}>
                         {sz === 'small' ? 'Pequena' : sz === 'normal' ? 'Normal' : 'Grande'}
                       </Text>
@@ -208,5 +210,3 @@ export default function Settings({ navigation }: Props) {
     </Screen>
   );
 }
-
-

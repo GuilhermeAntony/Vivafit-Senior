@@ -104,7 +104,7 @@ const exercises = [
 ];
 
 async function populateExercises() {
-  console.log('🏋️ Populando banco de dados com exercícios...\n');
+  console.log(' Populando banco de dados com exercícios...\n');
 
   try {
     // Verificar se já existem exercícios

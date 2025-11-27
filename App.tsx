@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { View, Text, ActivityIndicator } from 'react-native';
 import AppNavigator from './src/navigation';
+import { FontSizeProvider } from './src/contexts/FontSizeContext';
 
 export default function App() {
   const [error, setError] = useState<string | null>(null);
@@ -49,7 +50,9 @@ export default function App() {
 
   return (
     <SafeAreaProvider>
-      <AppNavigator />
+      <FontSizeProvider>
+        <AppNavigator />
+      </FontSizeProvider>
     </SafeAreaProvider>
   );
 }

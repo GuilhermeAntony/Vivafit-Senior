@@ -66,26 +66,26 @@ export const PREDEFINED_EXERCISES: Exercise[] = [
     instructions: 'Estenda um braço à frente do peito e puxe suavemente com a outra mão. Alterne os braços.'
   },
   {
-    id: 'exercicio-cadeira',
-    name: 'Exercício na Cadeira',
-    description: 'Fortalecimento usando uma cadeira como apoio',
-    imageUrl: require('../../assets/exercises/exercicio-cadeira.jpg'),
-    duration: 10,
-    difficulty: 'Médio',
-    category: 'Força',
-    benefits: ['Fortalece músculos', 'Melhora postura', 'Seguro'],
-    instructions: 'Sentado, levante os braços lateralmente até a altura dos ombros e abaixe lentamente.'
+    id: 'alongamento-pescoco',
+    name: 'Alongamento de Pescoço',
+    description: 'Exercícios suaves para relaxar a região cervical',
+    imageUrl: require('../../assets/exercises/alongamento-pescoco.jpg'),
+    duration: 5,
+    difficulty: 'Baixo',
+    category: 'Flexibilidade',
+    benefits: ['Alivia tensão', 'Reduz dor cervical', 'Melhora mobilidade'],
+    instructions: 'Sentado com as costas retas, incline suavemente a cabeça para o lado direito, segure por 10 segundos, depois para o lado esquerdo. Faça movimentos lentos e controlados.'
   },
   {
-    id: 'equilibrio-apoio',
-    name: 'Equilíbrio com Apoio',
-    description: 'Exercícios de equilíbrio com suporte para segurança',
-    imageUrl: require('../../assets/exercises/equilibrio-apoio.jpg'),
-    duration: 6,
-    difficulty: 'Médio',
-    category: 'Equilíbrio',
-    benefits: ['Previne quedas', 'Melhora coordenação', 'Fortalece core'],
-    instructions: 'Fique em pé apoiado em uma perna só. Use uma cadeira como apoio se necessário.'
+    id: 'circulos-ombros',
+    name: 'Círculos com os Ombros',
+    description: 'Movimento circular suave para mobilidade dos ombros',
+    imageUrl: require('../../assets/exercises/circulos-ombros.jpg'),
+    duration: 4,
+    difficulty: 'Baixo',
+    category: 'Flexibilidade',
+    benefits: ['Relaxa ombros', 'Melhora mobilidade', 'Reduz rigidez'],
+    instructions: 'Em pé ou sentado, faça movimentos circulares com os ombros, primeiro para frente 10 vezes, depois para trás 10 vezes. Mantenha os braços relaxados ao lado do corpo.'
   },
   {
     id: 'respiracao-profunda',
@@ -110,15 +110,15 @@ export const PREDEFINED_EXERCISES: Exercise[] = [
     instructions: 'De frente para a parede, apoie as mãos e faça movimentos de flexão.'
   },
   {
-    id: 'marcha-estacionaria',
-    name: 'Marcha Estacionária',
-    description: 'Cardio de baixo impacto sem deslocamento',
-    imageUrl: require('../../assets/exercises/marcha-estacionaria.jpg'),
-    duration: 8,
-    difficulty: 'Médio',
-    category: 'Cardio',
-    benefits: ['Melhora condicionamento', 'Fortalece pernas', 'Seguro'],
-    instructions: 'Caminhe no lugar elevando bem os joelhos, mantendo postura ereta.'
+    id: 'elevacao-bracos-sentado',
+    name: 'Elevação de Braços Sentado',
+    description: 'Fortalecimento dos ombros sentado na cadeira',
+    imageUrl: require('../../assets/exercises/elevacao-bracos-sentado.jpg'),
+    duration: 5,
+    difficulty: 'Baixo',
+    category: 'Força',
+    benefits: ['Fortalece ombros', 'Melhora postura', 'Muito seguro'],
+    instructions: 'Sentado com as costas retas, levante os braços lateralmente até a altura dos ombros e abaixe lentamente. Repita o movimento de forma controlada.'
   },
   {
     id: 'rotacao-tornozelos',
@@ -143,7 +143,7 @@ export const PREDEFINED_EXERCISES: Exercise[] = [
     instructions: 'Sente e levante da cadeira sem usar as mãos, controlando o movimento.'
   },
   {
-    id: 'equilibrio-uma-perna',
+    id: ' ',
     name: 'Equilíbrio em Uma Perna',
     description: 'Desafio de equilíbrio para fortalecer o core',
     imageUrl: require('../../assets/exercises/equilibrio-uma-perna.jpg'),

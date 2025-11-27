@@ -1,6 +1,7 @@
 import React from 'react';
 import { Text as RNText, TextProps as RNTextProps, TextStyle } from 'react-native';
 import { COLORS, TYPOGRAPHY } from '../../styles/designTokens';
+import { useFontSize } from '../../contexts/FontSizeContext';
 
 type TextVariant = 
   | 'default'
@@ -102,10 +103,18 @@ export const Text = ({
   color,
   ...rest 
 }: TextProps) => {
+  const { getFontSize } = useFontSize();
   const textStyles = getTextStyles(variant, color);
+  
+  // Aplicar preferência de tamanho de fonte
+  const adjustedStyles = {
+    ...textStyles,
+    fontSize: textStyles.fontSize ? getFontSize(textStyles.fontSize) : textStyles.fontSize,
+    lineHeight: textStyles.lineHeight ? getFontSize(textStyles.lineHeight) : textStyles.lineHeight,
+  };
 
   return (
-    <RNText {...rest} style={[textStyles, style as any]}>
+    <RNText {...rest} style={[adjustedStyles, style as any]}>
       {children}
     </RNText>
   );
